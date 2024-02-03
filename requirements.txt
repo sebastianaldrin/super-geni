@@ -1,0 +1,9 @@
+Flask
+flask-cors
+flask-session
+flask-socketio
+Pillow
+python-dotenv
+openai
+PyMuPDF
+pytesseract
