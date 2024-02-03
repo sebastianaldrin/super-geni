@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solution Geni</title>
+  <!-- Link to an external stylesheet for better organization -->
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.1.3/socket.io.js"></script>
+</head>
+<body>
+<div id="main-container">
+  <!-- Chatbox Container -->
+  <div id="chatbox-container">
+    <!-- Inside #chatbox-container -->
+    <!-- VIDEOELEMENT TAR PLATS UPPE PÅ SIDAN -->
+    <div id="camera-container">
+    <video id="videoElement" autoplay></video>
+    <canvas id="canvasElement" style="display:none;"></canvas>
+    <button id="retakeButton" style="display:none;">Retake Image</button>
+    <button id="upload-Button" style="display:none;">Upload Image</button>
+      <button id="captureButton"></button>
+  </div>
+    <!-- Add a button for taking pictures within the camera view -->
+
+
+    <!-- Header -->
+    <header>
+      <h1>Solution Geni</h1>
+    </header>
+    <!-- Chatbox -->
+    <div id="chatbox">
+      <!-- Display chat history -->
+      {% if chat_history %}
+      {% for message in chat_history %}
+      <div class="message {{ message.role }}-message">
+        <strong>{{ message.role.capitalize() }}:</strong>
+        <!-- Display message content, replacing newlines with <p> tags -->
+        <p>{{ message.content | replace('\n', '</p><p>') | safe }}</p>
+      </div>
+      {% endfor %}
+      {% else %}
+      <!-- Display a welcome message if no chat history -->
+      <div class="welcome model-message">
+        <em>Welcome to Teacher - Your School Learning Assistant!</em>
+        <br><br>
+        <strong>How to Use Teacher for School Teaching and Homework:</strong>
+        <ol>
+          <li>Ask School-Related Questions: Stuck on a math problem, need help with a science concept, or have questions about your history assignment? Simply ask Teacher for assistance with your schoolwork.</li>
+          <li>Homework Help: If you have specific homework questions, provide details about the assignment or question, and Teacher will guide you through the solution step-by-step.</li>
+          <li>Specify the Subject: Mention the subject you need help with in your query. For instance, say, "I need help with my English essay," or "Explain the Pythagorean theorem in math."</li>
+          <li><strong>Upload Homework:</strong> You can upload a photo or a PDF file of your homework, or ask your question in the text box.</li>
+          <li>Study Tips: Ask for study tips or strategies to help you prepare effectively for tests and exams.</li>
+          <li>Practice Problems: Request practice problems or exercises to reinforce your understanding of a topic.</li>
+          <li>Clarify Your Doubts: If an explanation is unclear, ask Teacher to clarify or rephrase it. Learning is all about understanding.</li>
+        </ol>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <!-- Mascot Container -->
+  <div id="mascot-container">
+    <img id="mascot-img" src="/static/test.png" alt="School Learning Mascot">
+  </div>
+  <!-- Form for text input and file upload -->
+  <div id="input-container">
+    <div id="input-box">
+      <!-- Reset and Upload Icons -->
+      <div id="icon-container">
+        <!-- Reset Icon -->
+        <label for="reset-button" id="reset-btn">
+          <img src="/static/text-slash-solid.webp" alt="reset button">
+        </label>
+        <!-- Upload Icon -->
+        <label for="file" id="upload-file-btn">
+          <img src="/static/arrow-up-from-bracket-solid.webp" alt="Upload Icon">
+          <input name="file" id="file" accept="image/*,application/pdf" type="file" style="display: none;">
+        </label>
+        <!-- Camera Icon and Button -->
+        <label for="camera" id="camera-btn">
+          <img src="/static/camera-solid.webp" alt="Camera Icon">
+          <input name="camera" id="camera" type="button" style="display: none;">
+        </label>
+      </div>
+
+      <!-- Text Input Form -->
+      <form action="/" method="post" id="text-input-form">
+        <label for="user-input"></label>
+        <input name="user_input" id="user-input" type="text">
+      </form>
+    </div>
+  </div>
+</div>
+<!-- Error Container (for displaying errors) -->
+<div id="error-container"></div>
+<!-- Link to the external JavaScript file -->
+<script src="/static/script.js"></script>
+</body>
+</html>
