@@ -126,10 +126,10 @@ Before you begin, ensure you have the following prerequisites:
 ---
 
 ## TODO
-Split the code, make it easier to read.
-Clean up the code.
-Websockets are not working correctly, the page refreshes when sending messages.
-The camera button is supposed to open the camera where the user can take a picture of the homework and then upload it, flask extracts the text and sends it to chatgpt.
+- Split the code, make it easier to read.
+- Clean up the code.
+- Websockets are not working correctly, the page refreshes when sending messages.
+- The camera button is supposed to open the camera where the user can take a picture of the homework and then upload it, flask extracts the text and sends it to chatgpt.
 
 ---
 
