@@ -147,4 +147,4 @@ Contributions to this project are welcome! If you have improvements, bug fixes, 
 
 ## License
 
-This project is provided under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is provided under the GPL-3 License. See the [LICENSE](LICENSE) file for details.
